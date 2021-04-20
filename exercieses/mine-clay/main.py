@@ -9,7 +9,7 @@ def main():
     while True:
         reset()
         bankToMine()
-        digRocks()
+        digRocks(20)
         mineToBank()
         selectBank()
         bankItems()
@@ -45,20 +45,20 @@ def whatSpace():
 def bankToMine():
     reset()
     pos = [[626, 151],[672, 186],[690, 179],[698, 168],[662, 146]]
+    times = [9,12,10,9,8]
 
     for i in range(0,5):
         moveMouse(pos[i])
         pyautogui.click()
-        if i < 4:
-            time.sleep(14)
-        else: time.sleep(9)
+        time.sleep(times[i])
 def mineToBank():
     pos = [[660, 48],[657, 45],[675, 49],[709, 70]]
+    times = [12,12,11,8]
 
     for i in range(0,4):
         moveMouse(pos[i])
         pyautogui.click()
-        time.sleep(14)
+        time.sleep(times[i])
     
     selectBank()
 def selectBank():
