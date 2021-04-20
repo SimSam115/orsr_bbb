@@ -9,7 +9,7 @@ def main():
     while True:
         reset()
         bankToMine()
-        digRocks(20)
+        digRocks()
         mineToBank()
         selectBank()
         bankItems()
@@ -28,9 +28,9 @@ def reset():
     moveMouse([594, 53])
     pyautogui.click()
     
-def digRocks(count):
+def digRocks():
     while True:
-        for i in range(0,5):
+        for i in range(0,3):
             move("left",2)
             time.sleep(1.45)
             move("up",1)
@@ -45,7 +45,7 @@ def whatSpace():
 def bankToMine():
     reset()
     pos = [[626, 151],[672, 186],[690, 179],[698, 168],[662, 146]]
-    times = [9,12,10,9,8]
+    times = [10,12,12,10,8]
 
     for i in range(0,5):
         moveMouse(pos[i])
