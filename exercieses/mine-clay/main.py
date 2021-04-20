@@ -16,7 +16,7 @@ def main():
         
         
 def bankItems():
-    move("right",2)
+    move("right",3)
     moveMouse([654, 262])
     pyautogui.click()
     time.sleep(1)
