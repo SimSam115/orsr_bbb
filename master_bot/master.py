@@ -21,7 +21,7 @@ class Bot:
             print("NEEDS AN INPUT")
             return False
         if(pos != [0,0]):
-            pyautogui.moveTo(screen.left + pos[0],screen.top + pos[1])
+            pyautogui.moveTo(self.screen.left + pos[0],self.screen.top + pos[1])
             pyautogui.mouseDown()
             time.sleep(random.randint(4,9)/10)
             pyautogui.mouseUp()
@@ -46,12 +46,13 @@ class Bot:
     def resetCamera(self):
         pyautogui.click([self.screen.left + 594, self.screen.top + 53])
     
-
+    def simulateKey(self,key):
+        pyautogui.press(key)
     
-    def selectThing(self,itemName,clickCount = 1, click = True):
+    def selectThing(self,itemName,clickCount = 1, click = True, offset = [0,0]):
         item = pyautogui.locateCenterOnScreen(self.dir + "/photos/" + itemName + ".png")
         if(not item): return False
-        pyautogui.moveTo(item)
+        pyautogui.moveTo(item.x + offset[0], item.y+offset[1])
         if click:
             for i in range(0,clickCount):
                 pyautogui.click()
