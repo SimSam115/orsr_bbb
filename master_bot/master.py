@@ -16,15 +16,15 @@ class Bot:
                 input("hit enter to continue after opening")
             
         
-    def clickMouse(self,d = "none", spaces = 1,pos=[0,0],offset=[0,0], click = True, clickCount = 1):
+    def clickMouse(self,d = "none", spaces = 1,pos=[0,0],offset=[0,0], click = True, clickCount = 1,mouseType = "left"):
         if(d == "none" and spaces == 1 and pos == [0,0] and offset==[0,0]):
             print("NEEDS AN INPUT")
             return False
         if(pos != [0,0]):
             pyautogui.moveTo(self.screen.left + pos[0],self.screen.top + pos[1])
-            pyautogui.mouseDown()
+            pyautogui.mouseDown(button = mouseType)
             time.sleep(random.randint(4,9)/10)
-            pyautogui.mouseUp()
+            pyautogui.mouseUp(button = mouseType)
             return True
             
         
@@ -38,9 +38,9 @@ class Bot:
         pyautogui.moveTo(self.screen.left + newRatio[0] + offset[0],self.screen.top+newRatio[1] + offset[1])
         if click:
             for i in range(0,clickCount):
-                pyautogui.mouseDown()
+                pyautogui.mouseDown(button = mouseType)
                 time.sleep(random.randint(4,9)/10)
-                pyautogui.mouseUp()
+                pyautogui.mouseUp(button = mouseType)
         return True
     
     def resetCamera(self):
@@ -49,13 +49,13 @@ class Bot:
     def simulateKey(self,key):
         pyautogui.press(key)
     
-    def selectThing(self,itemName,clickCount = 1, click = True, offset = [0,0]):
+    def selectThing(self,itemName,clickCount = 1, click = True, offset = [0,0],mouseType = "left"):
         item = pyautogui.locateCenterOnScreen(self.dir + "/photos/" + itemName + ".png")
         if(not item): return False
         pyautogui.moveTo(item.x + offset[0], item.y+offset[1])
         if click:
             for i in range(0,clickCount):
-                pyautogui.click()
+                pyautogui.click(button = mouseType)
         return True
     
     def bankWith2ItemCraft(self,item1, item2,count = 1,craftNum = 1, report = False):
