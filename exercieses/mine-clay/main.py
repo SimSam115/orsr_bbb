@@ -30,11 +30,15 @@ def reset():
     
 def digRocks():
     while True:
-        for i in range(0,3):
-            move("left",2)
-            time.sleep(1.45)
-            move("up",1)
-            time.sleep(1.45)
+        
+        move("left",2)
+        time.sleep(0.2)
+        move("left",2)
+        time.sleep(1.45)
+        move("up",1)
+        time.sleep(0.2)
+        move("up",1)
+        time.sleep(1.45)
         item = pyautogui.locateCenterOnScreen("bottom.png")
         if not item: break
 def whatSpace():

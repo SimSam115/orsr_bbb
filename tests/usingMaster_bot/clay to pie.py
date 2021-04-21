@@ -44,11 +44,10 @@ def getItems():
 
 
 player.resetCamera()
-#getItems()
+getItems()
 x = 1
 while True:
-    if x != 1: bankToPottery()
-    x=2
+    bankToPottery()
     player.selectThing("anvil",offset=[20,2])
     time.sleep(5)
     player.selectThing("soft_clay")

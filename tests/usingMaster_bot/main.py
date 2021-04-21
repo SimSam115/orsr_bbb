@@ -8,9 +8,9 @@ player = runeBot(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 #player.selectThing("bank")
 #player.resetCamera()
 #player.bankWith2ItemCraft("clay","water-bucket",count=14)
-player.bankWith2ItemCraft("dough","dish",count=14,report=True)
+#player.bankWith2ItemCraft("dough","dish",count=14,report=True)
 
-while False:
+while True:
     player.selectThing("bank")
     time.sleep(11)
     player.clickMouse("right",spaces=4)
