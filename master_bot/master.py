@@ -120,13 +120,14 @@ class Bot:
         return offset
     
     
-    def walkPath(path,timing=[]):
-        if timings == []:
+    def walkPath(self,path,timing=[]):
+        if timing == []:
             for i in path:
-                timings.append(10)
-               
+                timing.append(12.4)
+                
         for i in range(0,len(path)):
-            pyautogui.moveTo(pos[i])
+            current = path[i]
+            pyautogui.moveTo(self.screen.left + current[0],self.screen.top + current[1])
             pyautogui.mouseDown()
             time.sleep(random.randint(4,12)/10)
             pyautogui.mouseUp()

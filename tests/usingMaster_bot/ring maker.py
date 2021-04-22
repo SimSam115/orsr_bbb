@@ -8,7 +8,7 @@ player = runeBot(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 
 player.resetCamera()
 player.selectThing("bank",offset=[7,2])
-time.sleep(2)
+time.sleep(6)
 player.clickMouse("down",spaces=0.2,offset=[0,-4])
 time.sleep(1)
 player.selectThing("bank1item")
@@ -17,7 +17,7 @@ while True:
     if not player.selectThing("gold",clickCount=13): break
     if not player.selectThing("crafting/sapphire",clickCount=13): break
     time.sleep(1)
-    while not player.selectThing("furnace", offset=[-4,0]): time.sleep(1)
+    while not player.selectThing("furnace", offset=[-4.5,0]): time.sleep(1)
     time.sleep(10)
     player.clickMouse("right",spaces=3)
     time.sleep(1)
@@ -29,3 +29,4 @@ while True:
     player.selectThing("empty")
     time.sleep(1)
 
+player.textMaster("Im done making rings")
