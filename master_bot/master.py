@@ -39,7 +39,7 @@ class Bot:
         if click:
             for i in range(0,clickCount):
                 pyautogui.mouseDown(button = mouseType)
-                time.sleep(random.randint(4,9)/10)
+                time.sleep(random.randint(4,12)/10)
                 pyautogui.mouseUp(button = mouseType)
         return True
     
@@ -114,5 +114,23 @@ class Bot:
                 pyautogui.keyUp('shift')
             else:
                 full = False
+    def whatSpace(self):
+        x, y = pyautogui.position()
+        offset = [x-self.screen.left,y-self.screen.top]
+        return offset
+    
+    
+    def walkPath(path,timing=[]):
+        if timings == []:
+            for i in path:
+                timings.append(10)
+               
+        for i in range(0,len(path)):
+            pyautogui.moveTo(pos[i])
+            pyautogui.mouseDown()
+            time.sleep(random.randint(4,12)/10)
+            pyautogui.mouseUp()
+            time.sleep(timing[i])
+        
     def textMaster(self,what):
         self.masterPhone.messages.create(to="+12242219324",from_="+16362491215",body=what)
