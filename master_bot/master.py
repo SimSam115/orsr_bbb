@@ -49,8 +49,8 @@ class Bot:
     def simulateKey(self,key):
         pyautogui.press(key)
     
-    def selectThing(self,itemName,clickCount = 1, click = True, offset = [0,0],mouseType = "left"):
-        item = pyautogui.locateCenterOnScreen(self.dir + "/photos/" + itemName + ".png")
+    def selectThing(self,itemName,clickCount = 1, click = True, offset = [0,0],mouseType = "left",con = 1):
+        item = pyautogui.locateCenterOnScreen(self.dir + "/photos/" + itemName + ".png",confidence = con)
         if(not item): return False
         pyautogui.moveTo(item.x + offset[0], item.y+offset[1])
         if click:
