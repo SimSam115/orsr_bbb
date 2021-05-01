@@ -9,16 +9,8 @@ centerRatio = (2.8,2.8)
 def main():
     time.sleep(0.4)
     
-    count = 750
     can = True;full = False
     while can:
-        print(count)
-        count-=1
-        if(count < 0):
-            item = pyautogui.locateCenterOnScreen("quit.png")
-            pyautogui.click(item)
-            time.sleep(1)
-            os.system("shutdown /s /t 1");
         time.sleep(random.randint(25,35)/8)
         move("left",1)
         time.sleep(random.randint(25,35)/8)

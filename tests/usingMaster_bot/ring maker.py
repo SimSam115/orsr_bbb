@@ -11,7 +11,7 @@ start = datetime.datetime.now()
 print(start)
 
 
-player.resetCamera()
+#player.resetCamera()
 player.selectThing("bank",offset=[7,2])
 time.sleep(3)
 player.clickMouse("down",spaces=0.2,offset=[0,-4])

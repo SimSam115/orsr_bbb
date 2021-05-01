@@ -21,7 +21,8 @@ class Bot:
             print("NEEDS AN INPUT")
             return False
         if(pos != [0,0]):
-            pyautogui.moveTo(self.screen.left + pos[0],self.screen.top + pos[1])
+            pyautogui.moveTo(self.screen.left + pos[0],self.screen.top + pos[1],
+                             duration=(random.randint(8,20)/13))
             pyautogui.mouseDown(button = mouseType)
             time.sleep(random.randint(4,9)/10)
             pyautogui.mouseUp(button = mouseType)
@@ -35,27 +36,42 @@ class Bot:
         if d == "left":  vel[0] = -25;
         if d == "right": vel[0] =  25;
         newRatio = (self.center[0] + (vel[0] * spaces),self.center[1] + (vel[1] * spaces))
-        pyautogui.moveTo(self.screen.left + newRatio[0] + offset[0],self.screen.top+newRatio[1] + offset[1])
+        pyautogui.moveTo(self.screen.left + newRatio[0] + offset[0],self.screen.top+newRatio[1] + offset[1]
+                         ,duration=(random.randint(8,20)/13))
         if click:
             for i in range(0,clickCount):
                 pyautogui.mouseDown(button = mouseType)
-                time.sleep(random.randint(4,12)/10)
+                time.sleep(random.randint(4,8)/10)
                 pyautogui.mouseUp(button = mouseType)
         return True
     
     def resetCamera(self):
         pyautogui.click([self.screen.left + 594, self.screen.top + 53])
+        self.selectThing("settings")
+        time.sleep(random.randint(10,40)/30)
+        pyautogui.click([self.screen.left + 611, self.screen.top + 251])
+        time.sleep(random.randint(10,40)/30)
+        pyautogui.click([self.screen.left + 689, self.screen.top + 311])
+        time.sleep(random.randint(10,40)/30)
+        pyautogui.click([self.screen.left + 738, self.screen.top + 249])
+        time.sleep(random.randint(10,40)/30)
+        pyautogui.click([self.screen.left + 738, self.screen.top + 314])
+        
     
     def simulateKey(self,key):
         pyautogui.press(key)
     
-    def selectThing(self,itemName,clickCount = 1, click = True, offset = [0,0],mouseType = "left",con = 1):
-        item = pyautogui.locateCenterOnScreen(self.dir + "/photos/" + itemName + ".png",confidence = con)
+    def selectThing(self,itemName,clickCount = 1, click = True, offset = [0,0],mouseType = "left"):
+        item = pyautogui.locateCenterOnScreen(self.dir + "/photos/" + itemName + ".png")
         if(not item): return False
-        pyautogui.moveTo(item.x + offset[0], item.y+offset[1])
+        waitTime = (random.randint(8,20)/13)
+        #pyautogui.dragTo(item.x + offset[0], item.y+offset[1],duration=waitTime)
+        pyautogui.moveTo(item.x + offset[0], item.y+offset[1],duration=waitTime)
+        time.sleep(waitTime)
         if click:
             for i in range(0,clickCount):
                 pyautogui.click(button = mouseType)
+                time.sleep(0.05)
         return True
     
     def bankWith2ItemCraft(self,item1, item2,count = 1,craftNum = 1, report = False):
