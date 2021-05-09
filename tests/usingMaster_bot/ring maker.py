@@ -4,8 +4,6 @@ SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.
 sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 from master_bot.master import Bot as runeBot
 
-
-
 player = runeBot(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 start = datetime.datetime.now()
 print(start)
@@ -20,7 +18,7 @@ player.selectThing("bank1item")
 while True:
     player.selectThing("crafting/ring_mold")
     if not player.selectThing("gold",clickCount=13): break
-    if not player.selectThing("crafting/emerald",clickCount=13): break
+    if not player.selectThing("crafting/sapphire",clickCount=13): break
     time.sleep(1)
     while not player.selectThing("furnace", offset=[-4.5,0]):
         time.sleep(1)
@@ -28,7 +26,7 @@ while True:
     player.clickMouse("right",spaces=3)
     time.sleep(1)
     test = -1
-    while not player.selectThing("crafting/emerald_ring"):
+    while not player.selectThing("crafting/sapphire_ring"):
         player.selectThing("furnace", offset=[-4.5,0])
         time.sleep(7)
         player.clickMouse("right",spaces=3+test)

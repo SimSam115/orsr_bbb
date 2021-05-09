@@ -1,4 +1,4 @@
-import random, pygetwindow, pyautogui, time,sys
+import random, pygetwindow, pyautogui, time,sys, math
 from twilio.rest import Client
 import sys, os, time
 
@@ -22,9 +22,9 @@ class Bot:
             return False
         if(pos != [0,0]):
             pyautogui.moveTo(self.screen.left + pos[0],self.screen.top + pos[1],
-                             duration=(random.randint(8,20)/13))
+                             duration=(random.randint(8,15)/60))
             pyautogui.mouseDown(button = mouseType)
-            time.sleep(random.randint(4,9)/10)
+            #time.sleep(random.randint(2,5)/60)
             pyautogui.mouseUp(button = mouseType)
             return True
             
@@ -64,10 +64,16 @@ class Bot:
     def selectThing(self,itemName,clickCount = 1, click = True, offset = [0,0],mouseType = "left"):
         item = pyautogui.locateCenterOnScreen(self.dir + "/photos/" + itemName + ".png")
         if(not item): return False
-        waitTime = (random.randint(8,20)/13)
+        
+        x, y = pyautogui.position()
+        to_x, to_y = [x-self.screen.left,y-self.screen.top]
+        from_x, from_y = [item.x-self.screen.left,item.y-self.screen.top]
+        
+        distance = math.sqrt( (to_x - from_x)**2 + (to_y - from_y)**2 ) / random.randint(350,400)
+        #print(distance)
+        
         #pyautogui.dragTo(item.x + offset[0], item.y+offset[1],duration=waitTime)
-        pyautogui.moveTo(item.x + offset[0], item.y+offset[1],duration=waitTime)
-        time.sleep(waitTime)
+        pyautogui.moveTo(item.x + offset[0], item.y+offset[1],duration=distance)
         if click:
             for i in range(0,clickCount):
                 pyautogui.click(button = mouseType)
