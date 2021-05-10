@@ -7,7 +7,6 @@ from master_bot.master import Bot as runeBot
 player = runeBot(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 
 while True:
-    player.clickMouse(pos = [744, 273])
+    while not player.selectThing("spells/high_alch"): time.sleep(0.1)
     time.sleep(0.1)
-    player.clickMouse(pos = [740, 270])
-    time.sleep(0.6)
+    player.clickMouse(pos = [738, 331])

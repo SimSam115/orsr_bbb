@@ -11,8 +11,6 @@ def main():
     #player.resetCamera()
     getItems()
     
-    checkFillBucket()
-    
     player.selectThing("anvil",offset=[13,18])
     time.sleep(12)
     player.clickMouse("right",2)
@@ -22,9 +20,6 @@ def main():
     
     player.selectThing("anvil",offset=[0,35])
     time.sleep(5)
-    player.selectThing("water_bucket")
-    player.clickMouse("right",2.2,offset=[0,-25])
-    time.sleep(0.2)
     player.clickMouse("right",2.2,offset=[0,-25])
     time.sleep(0.6)
     player.simulateKey("2")
@@ -33,7 +28,7 @@ def main():
     time.sleep(1)
     
     player.selectThing("water",offset=[24,0])
-    time.sleep(8.3)
+    time.sleep(7.7)
     
     player.clickMouse("down",1)
     player.clickMouse("",pos=[695, 259])
