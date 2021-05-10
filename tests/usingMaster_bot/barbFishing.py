@@ -8,7 +8,7 @@ player = runeBot(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 
 
 def main():
-    drop_roe()
+    processFish()
     i = 0
     while True:
         i+=1
@@ -21,12 +21,12 @@ def main():
     
 
 def findFishingSpot():
-    player.clickMouse("",offset=[45,0],mouseType="right")
+    player.clickMouse("",offset=[35,0],mouseType="right")
     if player.selectThing("fishing/use_option"):
         return True
     
     for i in range(150,-220,-50):
-        player.clickMouse("",offset=[45,i],mouseType="right")
+        player.clickMouse("",offset=[35,i],mouseType="right")
         if player.selectThing("fishing/use_option"):
             return True
     return False
