@@ -1,4 +1,6 @@
 import random, pygetwindow, pyautogui, time,sys, math
+from random import random as r
+def rr(area=4): return (r()*area - area/2)
 from twilio.rest import Client
 import sys, os, time
 
@@ -21,14 +23,13 @@ class Bot:
             print("NEEDS AN INPUT")
             return False
         if(pos != [0,0]):
-            pyautogui.moveTo(self.screen.left + pos[0],self.screen.top + pos[1],
+            pyautogui.moveTo(self.screen.left + pos[0] + rr(),
+                             self.screen.top  + pos[1] + rr(),
                              duration=(random.randint(8,15)/60))
             pyautogui.mouseDown(button = mouseType)
-            #time.sleep(random.randint(2,5)/60)
+            time.sleep(random.randint(2,5)/90)
             pyautogui.mouseUp(button = mouseType)
             return True
-            
-        
         
         vel = [0,0]
         if d == "up":    vel[1] = -25;
@@ -36,8 +37,9 @@ class Bot:
         if d == "left":  vel[0] = -25;
         if d == "right": vel[0] =  25;
         newRatio = (self.center[0] + (vel[0] * spaces),self.center[1] + (vel[1] * spaces))
-        pyautogui.moveTo(self.screen.left + newRatio[0] + offset[0],self.screen.top+newRatio[1] + offset[1]
-                         ,duration=(random.randint(8,20)/13))
+        pyautogui.moveTo(self.screen.left + newRatio[0] + offset[0] + rr(),
+                         self.screen.top  + newRatio[1] + offset[1] + rr(),
+                         duration=(random.randint(8,20)/13))
         if click:
             for i in range(0,clickCount):
                 pyautogui.mouseDown(button = mouseType)
@@ -46,16 +48,16 @@ class Bot:
         return True
     
     def resetCamera(self):
-        pyautogui.click([self.screen.left + 594, self.screen.top + 53])
+        pyautogui.click([self.screen.left + 594 + rr(), self.screen.top + 53 + rr()])
         self.selectThing("settings")
         time.sleep(random.randint(10,40)/30)
-        pyautogui.click([self.screen.left + 611, self.screen.top + 251])
+        pyautogui.click([self.screen.left + 611 + rr(), self.screen.top + 251 + rr()])
         time.sleep(random.randint(10,40)/30)
-        pyautogui.click([self.screen.left + 689, self.screen.top + 311])
+        pyautogui.click([self.screen.left + 689 + rr(), self.screen.top + 311 + rr()])
         time.sleep(random.randint(10,40)/30)
-        pyautogui.click([self.screen.left + 738, self.screen.top + 249])
+        pyautogui.click([self.screen.left + 738 + rr(), self.screen.top + 249 + rr()])
         time.sleep(random.randint(10,40)/30)
-        pyautogui.click([self.screen.left + 738, self.screen.top + 314])
+        pyautogui.click([self.screen.left + 738 + rr(), self.screen.top + 314 + rr()])
         
     
     def simulateKey(self,key):
@@ -74,14 +76,17 @@ class Bot:
         from_x, from_y = [item.x-self.screen.left,item.y-self.screen.top]
         
         distance = math.sqrt( (to_x - from_x)**2 + (to_y - from_y)**2 ) / random.randint(350,400)
-        #print(distance)
         
-        #pyautogui.dragTo(item.x + offset[0], item.y+offset[1],duration=waitTime)
-        pyautogui.moveTo(item.x + offset[0], item.y+offset[1],duration=distance)
+
+        pyautogui.moveTo(item.x + offset[0] + rr(area=1.5),
+                         item.y + offset[1] + rr(area=1.5),
+                         duration=distance)
+        pyautogui.moveTo(item.x + offset[0] + rr(area=0.5),
+                         item.y + offset[1] + rr(area=0.5))
         if click:
             for i in range(0,clickCount):
                 pyautogui.click(button = mouseType)
-                time.sleep(0.05)
+                time.sleep(r()*0.6)
         return True
     
     def bankWith2ItemCraft(self,item1, item2,count = 1,craftNum = 1, report = False):
@@ -113,12 +118,7 @@ class Bot:
             
             if craftNum == 1:
                 pyautogui.press('space')
-            if craftNum == 2:
-                pyautogui.press('2')
-            if craftNum == 3:
-                pyautogui.press('3')
-            if craftNum == 4:
-                pyautogui.press('4')
+            else: pyautogui.press(str(craftNum))
             time.sleep(count*1.4)
             
             self.clickMouse(d="up",spaces=2)
@@ -134,9 +134,9 @@ class Bot:
             item = pyautogui.locateCenterOnScreen(item)
             if item:
                 pyautogui.keyDown('shift')
-                pyautogui.mouseDown(item)
+                pyautogui.mouseDown(item.x + rr(), item.y + rr())
                 time.sleep(0.1)
-                pyautogui.mouseUp(item)
+                pyautogui.mouseUp(item.x + rr(), item.y + rr())
                 pyautogui.keyUp('shift')
             else:
                 full = False
@@ -153,7 +153,8 @@ class Bot:
                 
         for i in range(0,len(path)):
             current = path[i]
-            pyautogui.moveTo(self.screen.left + current[0],self.screen.top + current[1])
+            pyautogui.moveTo(self.screen.left + current[0] + rr(),
+                             self.screen.top  + current[1] + rr())
             pyautogui.mouseDown()
             time.sleep(random.randint(4,12)/10)
             pyautogui.mouseUp()

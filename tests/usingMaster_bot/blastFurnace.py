@@ -56,6 +56,6 @@ def getItems():
 
 
 player.clickMouse("down",1)
-for i in range(1,10):
+for i in range(1,9):
     print("Currently running round "+ str(i))
     main()

@@ -18,7 +18,7 @@ player.selectThing("bank1item")
 while True:
     player.selectThing("crafting/ring_mold")
     if not player.selectThing("gold",clickCount=13): break
-    if not player.selectThing("crafting/sapphire",clickCount=13): break
+    if not player.selectThing("crafting/emerald",clickCount=13): break
     time.sleep(1)
     while not player.selectThing("furnace", offset=[-4.5,0]):
         time.sleep(1)
@@ -26,7 +26,7 @@ while True:
     player.clickMouse("right",spaces=3)
     time.sleep(1)
     test = -1
-    while not player.selectThing("crafting/sapphire_ring"):
+    while not player.selectThing("crafting/emerald_ring"):
         player.selectThing("furnace", offset=[-4.5,0])
         time.sleep(7)
         player.clickMouse("right",spaces=3+test)
