@@ -11,4 +11,4 @@ player = runeBot(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 
 
 #player.resetCamera()
-while player.selectThing("wc/tinderbox") and player.selectThing("wc/yew_logs"): time.sleep(2)
+#while player.selectThing("wc/tinderbox") and player.selectThing("wc/yew_logs"): time.sleep(2)

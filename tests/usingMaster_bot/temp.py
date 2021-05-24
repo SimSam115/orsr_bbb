@@ -5,8 +5,8 @@ sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 from master_bot.master import Bot as runeBot
 
 player = runeBot(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
-
-while True:
-    while not player.selectThing("spells/high_alch"): time.sleep(0.1)
-    time.sleep(0.1)
-    player.clickMouse(pos = [738, 331])
+#player.moveMouse(loc=[100,100])
+player.searchGamescreen("food/swordfish_raw")
+player.clickMouse(mouseType="right")
+player.searchGamescreen("fishing/harpoon_option")
+player.clickMouse()
